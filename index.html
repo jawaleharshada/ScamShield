@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScamShield — Stay Protected</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+    
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="header">
+
+        <a href="#home" class="logo">
+            <span class="logo-shield">🛡️</span>
+            ScamShield
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#scanner">Scanner</a>
+            <a href="#tips">Safety</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    <span></span>
+                    DIGITAL SAFETY TOOL
+                </div>
+
+                <h1>
+                    Stay one step
+                    <span>ahead of scams.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Check suspicious messages and links before you trust them.
+                    ScamShield helps you spot common warning signs in seconds.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#scanner" class="primary-button">
+                        Start Scanning
+                        <span>→</span>
+                    </a>
+
+                    <a href="#tips" class="secondary-button">
+                        Learn to stay safe
+                    </a>
+                </div>
+
+                <div class="trust-row">
+
+                    <div>
+                        <strong>✓</strong>
+                        Simple
+                    </div>
+
+                    <div>
+                        <strong>✓</strong>
+                        Fast
+                    </div>
+
+                    <div>
+                        <strong>✓</strong>
+                        Private
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="glow"></div>
+
+                <div class="shield-card">
+
+                    <div class="shield-ring">
+                        🛡️
+                    </div>
+
+                    <div class="shield-status">
+                        <span></span>
+                        Protection active
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCANNER -->
+        <section class="scanner-section" id="scanner">
+
+            <div class="section-heading">
+
+                <div class="badge centered">
+                    SECURITY SCANNER
+                </div>
+
+                <h2>
+                    Check before you trust.
+                </h2>
+
+                <p>
+                    Paste a suspicious message or website below.
+                </p>
+
+            </div>
+
+
+            <div class="scanner-card">
+
+                <div class="scanner-header">
+
+                    <div>
+                        <h3>Scam Scanner</h3>
+                        <p>Analyze potential threats</p>
+                    </div>
+
+                    <div class="scanner-dot">
+                        <span></span>
+                        Ready
+                    </div>
+
+                </div>
+
+
+                <!-- TABS -->
+
+                <div class="scanner-tabs">
+
+                    <button
+                        class="tab-button active"
+                        onclick="selectScanner('message')">
+
+                        <span>💬</span>
+                        Message
+
+                    </button>
+
+                    <button
+                        class="tab-button"
+                        onclick="selectScanner('url')">
+
+                        <span>🔗</span>
+                        Website URL
+
+                    </button>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="messageScanner"
+                    class="scanner-content">
+
+                    <label for="messageInput">
+                        Suspicious message
+                    </label>
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Paste a suspicious message here..."
+                    ></textarea>
+
+                    <div class="input-hint">
+                        Don't include real passwords, OTPs or private information.
+                    </div>
+
+                    <button
+                        class="scan-button"
+                        onclick="scanMessage()">
+
+                        Analyze Message
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- URL -->
+
+                <div
+                    id="urlScanner"
+                    class="scanner-content hidden">
+
+                    <label for="urlInput">
+                        Website URL
+                    </label>
+
+                    <input
+                        type="text"
+                        id="urlInput"
+                        placeholder="https://example.com"
+                    >
+
+                    <div class="input-hint">
+                        Check a link before opening or entering information.
+                    </div>
+
+                    <button
+                        class="scan-button"
+                        onclick="scanURL()">
+
+                        Check Website
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- RESULT -->
+
+                <div
+    id="result"
+    class="result hidden">
+
+    <div
+        id="resultIcon"
+        class="result-icon">
+        🛡️
+    </div>
+
+    <h3 id="resultTitle">
+        Result
+    </h3>
+
+    <p id="resultText">
+        Analysis result will appear here.
+    </p>
+
+    <!-- RISK SCORE -->
+
+    <div class="risk-score">
+
+        <div class="risk-score-top">
+            <span>Risk Score</span>
+            <strong id="riskScore">0/100</strong>
+        </div>
+
+        <div class="risk-bar">
+            <div
+                id="riskBar"
+                class="risk-bar-fill">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- WARNING REASONS -->
+
+    <div id="reasons"></div>
+
+</div>
+
+            </div>
+
+        </section>
+        <!-- ================= SCAM EXAMPLES ================= -->
+
+<section class="examples-section" id="examples">
+
+    <div class="section-heading">
+
+        <p class="small-title">LEARN TO RECOGNIZE SCAMS</p>
+
+        <h2>Common Scam Examples</h2>
+
+        <p>
+            Try a realistic example and see how ScamShield detects warning signs.
+        </p>
+
+    </div>
+
+
+    <div class="examples-grid">
+
+        <div class="example-card">
+
+            <div class="example-icon">🎁</div>
+
+            <h3>Fake Prize</h3>
+
+            <p>
+                Messages claiming you've won money or a reward.
+            </p>
+
+            <button onclick="tryExample('prize')">
+                Try Example →
+            </button>
+
+        </div>
+
+
+        <div class="example-card">
+
+            <div class="example-icon">🏦</div>
+
+            <h3>Bank Scam</h3>
+
+            <p>
+                Fake alerts asking for your account or verification details.
+            </p>
+
+            <button onclick="tryExample('bank')">
+                Try Example →
+            </button>
+
+        </div>
+
+
+        <div class="example-card">
+
+            <div class="example-icon">💼</div>
+
+            <h3>Fake Job</h3>
+
+            <p>
+                Offers promising easy money or guaranteed income.
+            </p>
+
+            <button onclick="tryExample('job')">
+                Try Example →
+            </button>
+
+        </div>
+
+
+        <div class="example-card">
+
+            <div class="example-icon">📦</div>
+
+            <h3>Delivery Scam</h3>
+
+            <p>
+                Fake delivery messages asking you to verify a payment or link.
+            </p>
+
+            <button onclick="tryExample('delivery')">
+                Try Example →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- HOW IT WORKS -->
+
+        
+        <!-- ================= SCAN HISTORY ================= -->
+
+<section class="history-section" id="history">
+
+    <div class="section-heading">
+
+        <div class="badge centered">
+            SCAN HISTORY
+        </div>
+
+        <h2>
+            Your recent scans.
+        </h2>
+
+        <p>
+            Review your previous ScamShield checks on this device.
+        </p>
+
+    </div>
+
+
+    <div class="history-card">
+
+        <div class="history-header">
+
+            <div>
+                <h3>Recent Activity</h3>
+                <p>Your scan results are stored locally.</p>
+            </div>
+
+            <button
+                class="clear-history"
+                onclick="clearHistory()">
+
+                Clear History
+
+            </button>
+
+        </div>
+
+
+        <div id="historyList">
+
+            <div class="empty-history">
+                No scans yet.
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ================= SCAN HISTORY ================= -->
+
+<section class="history-section" id="history">
+
+    <div class="section-heading">
+
+        <div class="badge centered">
+            SCAN HISTORY
+        </div>
+
+        <h2>
+            Your recent scans.
+        </h2>
+
+        <p>
+            Review your previous ScamShield checks on this device.
+        </p>
+
+    </div>
+
+
+    <div class="history-card">
+
+        <div class="history-header">
+
+            <div>
+                <h3>Recent Activity</h3>
+                <p>Your scan results are stored locally.</p>
+            </div>
+
+            <button
+                class="clear-history"
+                onclick="clearHistory()">
+
+                Clear History
+
+            </button>
+
+        </div>
+
+
+        <div id="historyList">
+
+            <div class="empty-history">
+                No scans yet.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="how-section">
+
+            <div class="section-heading">
+
+                <div class="badge centered">
+                    HOW IT WORKS
+                </div>
+
+                <h2>
+                    Security made simple.
+                </h2>
+
+                <p>
+                    Three quick steps to make smarter decisions online.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step-card">
+
+                    <span class="step-number">01</span>
+
+                    <div class="step-icon">
+                        ↓
+                    </div>
+
+                    <h3>Paste</h3>
+
+                    <p>
+                        Add a suspicious message or website link.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">02</span>
+
+                    <div class="step-icon">
+                        ◇
+                    </div>
+
+                    <h3>Analyze</h3>
+
+                    <p>
+                        ScamShield checks for common warning signs.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">03</span>
+
+                    <div class="step-icon">
+                        ✓
+                    </div>
+
+                    <h3>Protect</h3>
+
+                    <p>
+                        Understand the risk before taking action.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SAFETY TIPS -->
+
+        <section class="tips-section" id="tips">
+
+            <div class="section-heading">
+
+                <div class="badge centered">
+                    STAY PROTECTED
+                </div>
+
+                <h2>
+                    Small habits. Big difference.
+                </h2>
+
+                <p>
+                    Keep these simple rules in mind whenever you're online.
+                </p>
+
+            </div>
+
+
+            <div class="tips-grid">
+
+                <div class="tip-card">
+
+                    <div class="tip-icon">🔐</div>
+
+                    <h3>Protect your OTP</h3>
+
+                    <p>
+                        Never share OTPs, PINs or passwords with anyone.
+                    </p>
+
+                </div>
+
+
+                <div class="tip-card">
+
+                    <div class="tip-icon">🔗</div>
+
+                    <h3>Check the link</h3>
+
+                    <p>
+                        Look carefully at a website before entering information.
+                    </p>
+
+                </div>
+
+
+                <div class="tip-card">
+
+                    <div class="tip-icon">⏱️</div>
+
+                    <h3>Don't rush</h3>
+
+                    <p>
+                        Scammers often create urgency to make you act quickly.
+                    </p>
+
+                </div>
+
+
+                <div class="tip-card">
+
+                    <div class="tip-icon">💰</div>
+
+                    <h3>Question easy money</h3>
+
+                    <p>
+                        Unexpected prizes and guaranteed profits deserve caution.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🛡️ ScamShield
+        </div>
+
+        <p>
+            Stay alert. Stay informed. Stay protected.
+        </p>
+
+        <span>
+            © 2026 ScamShield
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
